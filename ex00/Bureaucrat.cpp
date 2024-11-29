@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat()
-	: _grade(150), _name("Bob") {}
+	: _name("Bob"), _grade(150) {}
 
 Bureaucrat::~Bureaucrat() {}
 
@@ -61,8 +61,11 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return _message.c_str();
 }
 
+Bureaucrat::GradeTooHighException::~GradeTooHighException() _NOEXCEPT {}
+Bureaucrat::GradeTooLowException::~GradeTooLowException() _NOEXCEPT {}
+
 
 std::ostream& operator<<(std::ostream& o, Bureaucrat const & inst) {
-	o << inst.getName() << ", bureaucrat grade " << inst.getGrade() << std::endl;
+	o << inst.getName() << ", bureaucrat grade " << inst.getGrade() << "." << std::endl;
 	return o;
 }

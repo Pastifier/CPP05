@@ -28,10 +28,10 @@ private:
 	{
 	public:
 		virtual const char* what() const throw();
+		virtual ~GradeTooHighException() _NOEXCEPT;
 		GradeTooHighException(std::string const & name_);
 	private:
 		GradeTooHighException& operator=(GradeTooHighException const & rhs);
-		GradeTooHighException(GradeTooHighException const & other);
 		std::string _message;
 	};
 	
@@ -39,10 +39,10 @@ private:
 	{
 	public:
 		virtual const char* what() const throw();
+		virtual ~GradeTooLowException() _NOEXCEPT;
 		GradeTooLowException(std::string const & name_);
 	private:
 		GradeTooLowException& operator=(GradeTooLowException const & rhs);
-		GradeTooLowException(GradeTooLowException const & other);
 		std::string _message;
 	};
 };

@@ -1,5 +1,5 @@
 # Program
-NAME := exception
+NAME := main
 
 # Necessities
 CXX := c++
