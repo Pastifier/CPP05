@@ -10,11 +10,9 @@ Bureaucrat::Bureaucrat(Bureaucrat const & other) {
 	this->_name = other.getName();
 }
 
-Bureaucrat::Bureaucrat(std::string const& name_, int grade_) {
-	this->_grade = grade_;
+Bureaucrat::Bureaucrat(std::string const& name_, int grade_)
+	: _name(name_), _grade(grade_) {
 	checkGradeValidity();
-
-	this->_name = name_;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs) {
@@ -37,13 +35,15 @@ void Bureaucrat::checkGradeValidity() {
 }
 
 void Bureaucrat::promoteGrade() {
+	if (_grade == 1)
+		throw GradeTooHighException(_name);
 	_grade--;
-	checkGradeValidity();
 }
 
 void Bureaucrat::demoteGrade() {
+	if (_grade == 150)
+		throw GradeTooLowException(_name);
 	_grade++;
-	checkGradeValidity();
 }
 
 
@@ -62,7 +62,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 
-std::ostream& operator<<(std::ostream &o, Bureaucrat *inst) {
-	o << inst->getName() << ", bureaucrat grade " << inst->getGrade() << std::endl;
+std::ostream& operator<<(std::ostream& o, Bureaucrat const & inst) {
+	o << inst.getName() << ", bureaucrat grade " << inst.getGrade() << std::endl;
 	return o;
 }

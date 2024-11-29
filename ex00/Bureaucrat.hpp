@@ -47,4 +47,4 @@ private:
 	};
 };
 
-std::ostream& operator<<(std::ostream &o, Bureaucrat *a);
+std::ostream& operator<<(std::ostream& o, Bureaucrat const & inst);
