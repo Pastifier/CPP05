@@ -1,7 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <exception>
+#include "Bureaucrat.hpp"
 
 class Form
 {
@@ -16,6 +15,7 @@ public:
 	bool getSignatureStat() const;
 	int getSignGrade() const;
 	int getExecGrade() const;
+	void beSigned(Bureaucrat const & signatory);
 
 private:
 	std::string const _name;

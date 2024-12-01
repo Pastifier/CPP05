@@ -27,6 +27,15 @@ Form& Form::operator=(Form const & rhs) {
 	return *this;
 }
 
+void Form::beSigned(Bureaucrat const & signatory) {
+	if (signatory.getGrade() <= _signGrade)
+	{
+		_isSigned = true;
+		return;
+	}
+	throw GradeTooLowException(_name);
+}
+
 std::string const& Form::getName() const {
 	return this->_name;
 }

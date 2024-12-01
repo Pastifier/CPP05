@@ -4,6 +4,8 @@
 #include <exception>
 #include <iostream>
 
+class Form;
+
 class Bureaucrat
 {
 public:
@@ -18,6 +20,8 @@ public:
 
 	void promoteGrade();
 	void demoteGrade();
+
+	void signForm(Form& form_);
 
 private:
 	std::string _name;
