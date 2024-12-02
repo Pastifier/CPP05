@@ -10,7 +10,10 @@ Form::Form(std::string const &name_, int signGrade_, int execGrade_)
 	: _name(name_),
 	_isSigned(false),
 	_signGrade(signGrade_),
-	_execGrade(execGrade_) {}
+	_execGrade(execGrade_)
+{
+	checkGradeValidity();
+}
 
 Form::~Form() {}
 
