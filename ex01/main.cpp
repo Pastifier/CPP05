@@ -1,4 +1,5 @@
-#include "Bureaucrat.hpp"
+//#include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 #define PRINT(X) std::cout << X << std::endl
@@ -46,6 +47,18 @@ PRINT("============== DEMOTION == START ==============");
 			std::cout << e.what() << std::endl;
 		}
 	}
+PRINT("\n\n");
+PRINT("============== FORM == START ==============");
+
+	Bureaucrat ahmed("Ahmed", 150);
+	Bureaucrat emran("Emran", 25);
+
+	Form visa("Visa Form", 50, 25);
+	std::cout << visa << std::endl;
+	ahmed.signForm(visa);
+PRINT("\n");
+	emran.signForm(visa);
+PRINT("\n");
 	return 0;
 }
 

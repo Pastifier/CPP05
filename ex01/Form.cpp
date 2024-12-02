@@ -71,10 +71,13 @@ void Form::checkGradeValidity() {
 		throw GradeTooLowException(_name);
 }
 
+Form::GradeTooHighException::~GradeTooHighException() _NOEXCEPT {}
+Form::GradeTooLowException::~GradeTooLowException() _NOEXCEPT {}
+
 std::ostream& operator<<(std::ostream& o, Form const & inst) {
 	o << "==========================================================\n";
 	o << "Form Name: " << inst.getName() << "\n";
-	o << "Signature Status: " << inst.getSignatureStat() ? "signed\n" : "not signed yet\n";
+	o << "Signature Status: " << (inst.getSignatureStat() ? "signed\n" : "not signed yet\n");
 	o << "Sign Grade Requirement: " << inst.getSignGrade() << "\n";
 	o << "Execution Grade Requirement: " << inst.getExecGrade() << "\n";
 	o << "==========================================================" << std::endl;

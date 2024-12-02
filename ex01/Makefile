@@ -13,7 +13,7 @@ RESET		=	\e[0m
 CURSIVE		=	\e[33;3m
 
 # Targets
-SRC := Form.cpp
+SRC := Form.cpp Bureaucrat.cpp main.cpp
 INCLUDES := $(SRC:.cpp=.hpp)
 
 # Rules
