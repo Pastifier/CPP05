@@ -16,8 +16,8 @@ PRINT("============== CONSTRUCTOR == START ==============");
 	try {
 		newGuy.demoteGrade();
 	} catch (std::exception & e) {
-		std::cout << "EXCEPTION CAUGHT:\n\t";
-		std::cout << e.what() << std::endl;
+		std::cerr << "EXCEPTION CAUGHT:\n\t";
+		std::cerr << e.what() << std::endl;
 	}
 PRINT("\n\n");
 PRINT("============== PROMOTION == START ==============");
@@ -29,8 +29,8 @@ PRINT("============== PROMOTION == START ==============");
 			newestGuy.promoteGrade();
 			std::cout << newestGuy;
 		} catch (std::exception & e) {
-			std::cout << "EXCEPTION CAUGHT:\n\t";
-			std::cout << e.what() << std::endl;
+			std::cerr << "EXCEPTION CAUGHT:\n\t";
+			std::cerr << e.what() << std::endl;
 		}
 	}
 PRINT("\n\n");
@@ -42,8 +42,8 @@ PRINT("============== DEMOTION == START ==============");
 			newestGuy.demoteGrade();
 			std::cout << newestGuy;
 		} catch (std::exception & e) {
-			std::cout << "EXCEPTION CAUGHT:\n\t";
-			std::cout << e.what() << std::endl;
+			std::cerr << "EXCEPTION CAUGHT:\n\t";
+			std::cerr << e.what() << std::endl;
 		}
 	}
 	return 0;
