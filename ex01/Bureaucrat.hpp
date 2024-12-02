@@ -32,7 +32,11 @@ private:
 	{
 	public:
 		virtual const char* what() const throw();
+#if defined(__MACH__)
 		virtual ~GradeTooHighException() _NOEXCEPT;
+#else
+		virtual ~GradeTooHighException() _GLIBCXX_NOTHROW;
+#endif
 		GradeTooHighException(std::string const & name_);
 	private:
 		GradeTooHighException& operator=(GradeTooHighException const & rhs);
@@ -43,7 +47,11 @@ private:
 	{
 	public:
 		virtual const char* what() const throw();
+#if defined(__MACH__)
 		virtual ~GradeTooLowException() _NOEXCEPT;
+#else
+		virtual ~GradeTooLowException() _GLIBCXX_NOTHROW;
+#endif
 		GradeTooLowException(std::string const & name_);
 	private:
 		GradeTooLowException& operator=(GradeTooLowException const & rhs);

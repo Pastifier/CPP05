@@ -74,8 +74,13 @@ void Form::checkGradeValidity() {
 		throw GradeTooLowException(_name);
 }
 
+#if defined(__MACH__)
 Form::GradeTooHighException::~GradeTooHighException() _NOEXCEPT {}
 Form::GradeTooLowException::~GradeTooLowException() _NOEXCEPT {}
+#else
+Form::GradeTooHighException::~GradeTooHighException() _GLIBCXX_NOTHROW {}
+Form::GradeTooLowException::~GradeTooLowException() _GLIBCXX_NOTHROW {}
+#endif
 
 std::ostream& operator<<(std::ostream& o, Form const & inst) {
 	o << "==========================================================\n";

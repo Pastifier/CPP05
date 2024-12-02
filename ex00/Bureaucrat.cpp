@@ -61,9 +61,13 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return _message.c_str();
 }
 
+#if defined(__MACH__)
 Bureaucrat::GradeTooHighException::~GradeTooHighException() _NOEXCEPT {}
 Bureaucrat::GradeTooLowException::~GradeTooLowException() _NOEXCEPT {}
-
+#else
+Bureaucrat::GradeTooHighException::~GradeTooHighException() _GLIBCXX_NOTHROW {}
+Bureaucrat::GradeTooLowException::~GradeTooLowException() _GLIBCXX_NOTHROW {}
+#endif
 
 std::ostream& operator<<(std::ostream& o, Bureaucrat const & inst) {
 	o << inst.getName() << ", bureaucrat grade " << inst.getGrade() << "." << std::endl;
