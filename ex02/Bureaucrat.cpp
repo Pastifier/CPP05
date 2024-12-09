@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 Bureaucrat::Bureaucrat()
 	: _name("Bob"), _grade(150) {}
@@ -24,7 +23,7 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs) {
 	return *this;
 }
 
-void Bureaucrat::signForm(Form& form_) {
+void Bureaucrat::signForm(AForm& form_) {
 	try {
 		std::cout << this->_name << " tries to sign " << form_.getName() << "\n";
 		form_.beSigned(*this);

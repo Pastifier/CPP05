@@ -1,4 +1,8 @@
+#pragma once
+
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class AForm
 {
@@ -70,4 +74,4 @@ protected:
 	void checkGradeValidity();
 };
 
-std::ostream& operator<<(std::ostream& o, const AForm const & inst);
+std::ostream& operator<<(std::ostream& o, AForm const & inst);

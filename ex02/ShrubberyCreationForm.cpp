@@ -26,7 +26,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat & executor) {
+void ShrubberyCreationForm::execute(const Bureaucrat & executor) const {
 	if (!this->_isSigned) throw ShrubberyCreationForm::FormNotSignedException(_name);
 	if (executor.getGrade() >= _execGrade) throw ShrubberyCreationForm::GradeTooLowException(executor.getName());
 	try {

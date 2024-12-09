@@ -3,9 +3,9 @@
 #include <string>
 #include <exception>
 #include <iostream>
+#include "AForm.hpp"
 
-class Form;
-
+class AForm;
 class Bureaucrat
 {
 public:
@@ -21,7 +21,8 @@ public:
 	void promoteGrade();
 	void demoteGrade();
 
-	void signForm(Form& form_);
+	void signForm(AForm& form_);
+	void executeForm(AForm const & form);
 
 private:
 	std::string _name;
