@@ -17,7 +17,7 @@ public:
 	virtual void execute(Bureaucrat const & executor) const = 0;
 	virtual ~AForm();
 
-private:
+protected:
 	std::string const _name;
 	bool _isSigned;
 	const int _signGrade;
@@ -50,6 +50,21 @@ private:
 		GradeTooLowException(std::string const & name_);
 	private:
 		GradeTooLowException& operator=(GradeTooLowException const & rhs);
+		std::string _message;
+	};
+
+	class FormNotSignedException : public std::exception
+	{
+	public:
+		virtual const char* what() const throw();
+#if defined(__MACH__)
+		virtual ~FormNotSignedException() _NOEXCEPT;
+#else
+		virtual ~FormNotSignedException() _GLIBCXX_NOTHROW;
+#endif
+		FormNotSignedException(std::string const & name_);
+	private:
+		FormNotSignedException& operator=(FormNotSignedException const & rhs);
 		std::string _message;
 	};
 	void checkGradeValidity();

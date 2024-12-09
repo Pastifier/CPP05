@@ -67,6 +67,13 @@ const char* AForm::GradeTooLowException::what() const throw() {
 AForm::GradeTooLowException::GradeTooLowException(std::string const & name_)
 	: _message(name_ + ": Grade too low.") {}
 
+
+const char* AForm::FormNotSignedException::what() const throw() {
+	return _message.c_str();
+}
+AForm::FormNotSignedException::FormNotSignedException(std::string const & name_)
+	: _message(name_ + ": Form not signed.") {}
+
 void AForm::checkGradeValidity() {
 	if (_signGrade < 1 || _execGrade < 1)
 		throw GradeTooHighException(_name);
@@ -77,9 +84,11 @@ void AForm::checkGradeValidity() {
 #if defined(__MACH__)
 AForm::GradeTooHighException::~GradeTooHighException() _NOEXCEPT {}
 AForm::GradeTooLowException::~GradeTooLowException() _NOEXCEPT {}
+AForm::FormNotSignedException::~FormNotSignedException() _NOEXCEPT {}
 #else
 AForm::GradeTooHighException::~GradeTooHighException() _GLIBCXX_NOTHROW {}
 AForm::GradeTooLowException::~GradeTooLowException() _GLIBCXX_NOTHROW {}
+AForm::FormNotSignedException::~FormNotSignedException() _GLIBCXX_NOTHROW {}
 #endif
 
 std::ostream& operator<<(std::ostream& o, AForm const & inst) {
