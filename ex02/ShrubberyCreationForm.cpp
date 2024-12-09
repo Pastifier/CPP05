@@ -43,6 +43,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat & executor) const {
 		file << "/O/X/*/O/|\\X\\*\\O\\X\\ \n";
 		file << "        |X| \n";
 		file << "        |X| \n";
+		file.close();
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
