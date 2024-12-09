@@ -14,7 +14,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & other
 		"Shrubbery Creation",
 		145,
 		137
-	)
+	),
+	_target(other.getTarget())
 { this->_isSigned = other.getSignatureStat(); }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
@@ -22,8 +23,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs) {
 	if (this != &rhs) {
 		this->_isSigned = rhs.getSignatureStat();
+		this->_target = rhs.getTarget();
 	}
 	return *this;
+}
+
+std::string const& ShrubberyCreationForm::getTarget() const {
+	return this->_target;
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
@@ -32,7 +38,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 
 	try
 	{
-		std::fstream file(executor.getName() + "_shrubbery", std::ios::out);
+		std::fstream file(this->getTarget() + "_shrubbery", std::ios::out);
 
 		if (!file.is_open())
 		{
