@@ -26,11 +26,20 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat & executor) const {
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	if (!this->_isSigned) throw ShrubberyCreationForm::FormNotSignedException(_name);
 	if (executor.getGrade() >= _execGrade) throw ShrubberyCreationForm::GradeTooLowException(executor.getName());
-	try {
-		std::fstream file(executor.getName() + "_shrubbery");
+
+	try
+	{
+		std::fstream file(executor.getName() + "_shrubbery", std::ios::out);
+
+		if (!file.is_open())
+		{
+			std::cerr << this->getName() << ": Error opening file for writing." << std::endl;
+			return;
+		}
+
 		file << "         * \n";
 		file << "        /|\\ \n";
 		file << "       /*|O\\ \n";
@@ -43,8 +52,13 @@ void ShrubberyCreationForm::execute(const Bureaucrat & executor) const {
 		file << "/O/X/*/O/|\\X\\*\\O\\X\\ \n";
 		file << "        |X| \n";
 		file << "        |X| \n";
+
 		file.close();
-	} catch (std::exception& e) {
+
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
 		std::cerr << e.what() << std::endl;
 	}
 }

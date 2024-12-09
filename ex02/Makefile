@@ -13,7 +13,7 @@ RESET		=	\e[0m
 CURSIVE		=	\e[33;3m
 
 # Targets
-SRC := AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentailPardonForm.cpp main.cpp
+SRC := AForm.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentailPardonForm.cpp main.cpp
 INCLUDES := $(SRC:.cpp=.hpp)
 
 # Rules

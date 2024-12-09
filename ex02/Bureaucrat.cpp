@@ -34,6 +34,14 @@ void Bureaucrat::signForm(AForm& form_) {
 	}
 }
 
+void Bureaucrat::executeForm(AForm const & form) {
+	try {
+		form.execute(*this);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 std::string const& Bureaucrat::getName() const { return this->_name; }
 int Bureaucrat::getGrade() const { return this->_grade; }
 
