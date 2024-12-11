@@ -1,5 +1,5 @@
 # Program
-NAME := srpf
+NAME := intern
 
 # Necessities
 CXX := c++

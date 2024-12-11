@@ -48,7 +48,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 
 	try
 	{
-		std::fstream file(this->getTarget() + "_shrubbery", std::ios::out);
+		std::fstream file((this->getTarget() + "_shrubbery").c_str(), std::ios::out);
 
 		if (!file.is_open())
 		{
