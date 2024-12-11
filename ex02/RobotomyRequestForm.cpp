@@ -5,7 +5,17 @@ RobotomyRequestForm::RobotomyRequestForm()
 		"Robotomy Request",
 		72,
 		45
-	)
+	),
+	_target("default")
+{}
+
+RobotomyRequestForm::RobotomyRequestForm(std::string const& target_)
+	: AForm(
+		"Robotomy Request",
+		72,
+		45
+	),
+	_target(target_)
 {}
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & other)
@@ -31,11 +41,11 @@ std::string const& RobotomyRequestForm::getTarget() const {
 	return this->_target;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) {
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	static short alt;
 
 	if (!this->getSignatureStat()) throw RobotomyRequestForm::FormNotSignedException(_name);
-	if (executor.getGrade() >= this->getExecGrade()) throw RobotomyRequestForm::GradeTooLowException(_name);
+	if (executor.getGrade() > this->getExecGrade()) throw RobotomyRequestForm::GradeTooLowException(_name);
 
 	std::cout << "* drilling noises *" << std::endl;
 	if (alt++ % 2)

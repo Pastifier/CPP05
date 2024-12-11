@@ -6,7 +6,17 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 		"Shrubbery Creation",
 		145,
 		137
-	)
+	),
+	_target("default")
+{}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const& target_)
+	: AForm(
+		"Shrubbery Creation",
+		145,
+		137
+	),
+	_target(target_)
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & other)
@@ -34,7 +44,7 @@ std::string const& ShrubberyCreationForm::getTarget() const {
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	if (!this->_isSigned) throw ShrubberyCreationForm::FormNotSignedException(_name);
-	if (executor.getGrade() >= _execGrade) throw ShrubberyCreationForm::GradeTooLowException(executor.getName());
+	if (executor.getGrade() > _execGrade) throw ShrubberyCreationForm::GradeTooLowException(_name);
 
 	try
 	{
