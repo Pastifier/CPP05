@@ -24,7 +24,7 @@ public:
 	void signForm(Form& form_);
 
 private:
-	std::string _name;
+	const std::string _name;
 	int _grade;
 	void checkGradeValidity();
 

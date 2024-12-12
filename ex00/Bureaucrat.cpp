@@ -5,9 +5,10 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(Bureaucrat const & other) {
+Bureaucrat::Bureaucrat(Bureaucrat const & other)
+	: _name(other.getName())
+{
 	this->_grade = other.getGrade();
-	this->_name = other.getName();
 }
 
 Bureaucrat::Bureaucrat(std::string const& name_, int grade_)
@@ -18,7 +19,6 @@ Bureaucrat::Bureaucrat(std::string const& name_, int grade_)
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs) {
 	if (this != &rhs) {
 		this->_grade = rhs.getGrade();
-		this->_name = rhs.getName();
 	}
 	return *this;
 }
